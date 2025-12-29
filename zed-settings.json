@@ -7,6 +7,19 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "git_panel": {
+    "sort_by_path": true,
+  },
+  "agent": {
+    "always_allow_tool_actions": true,
+    "dock": "left",
+    "default_profile": "write",
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-3-flash-preview",
+    },
+    "model_parameters": [],
+  },
   "outline_panel": {
     "dock": "right",
   },
@@ -43,9 +56,7 @@
   "ui_font_family": "Dank Mono",
   "buffer_font_family": "Dank Mono",
   "terminal": {
-    "shell": {
-      "program": "C:\\Program Files\\Git\\bin\\bash.exe",
-    },
+    "shell": "system",
   },
   "icon_theme": {
     "mode": "dark",
@@ -54,28 +65,14 @@
   },
   "base_keymap": "JetBrains",
   "ui_font_size": 20,
-  "buffer_font_size": 25,
+  "buffer_font_size": 24.0,
   "theme": {
     "mode": "dark",
     "light": "One Dark",
-    "dark": "Catppuccin Mocha (Blur) [Light]",
-  },
-
-  "lsp": {
-    "basedpyright": {
-      "settings": {
-        "basedpyright.analysis": {
-          "diagnosticMode": "workspace",
-          "inlayHints": {
-            "callArgumentNames": false,
-          },
-        },
-      },
-    },
+    "dark": "Catppuccin Mocha",
   },
 
   "file_types": {
-    "HTML": ["html", "jinja", "jinja2", "j2"],
     "Django": ["html"],
     "PHP": ["*.php"],
     "Blade": ["*.blade.php"],
@@ -83,7 +80,7 @@
 
   "languages": {
     "PHP": {
-      "language_servers": ["phpactor", "..."],
+      "language_servers": ["intelephense", "!phpactor"],
       "formatter": {
         "external": {
           "command": "npx",
@@ -95,14 +92,42 @@
       "language_servers": [
         // Disable basedpyright and enable Ty, and otherwise
         // use the default configuration.
-        "ty",
-        "!basedpyright",
-        "...",
+        "!ty",
+        "basedpyright",
       ],
     },
     "Django": {
       "language_servers": ["django-language-server"],
       "tab_size": 4,
+    },
+  },
+
+  "lsp": {
+    "lsp": {
+      "intelephense": {
+        "initialization_options": {
+          "licenceKey": "003MKOZTXPXLPLK",
+        },
+      },
+    },
+
+    "basedpyright": {
+      "initialization_options": {
+        "python": {
+          "analysis": {
+            "djangoSettingsModule": "config.settings",
+          },
+        },
+      },
+
+      "settings": {
+        "basedpyright.analysis": {
+          "diagnosticMode": "workspace",
+          "inlayHints": {
+            "callArgumentNames": false,
+          },
+        },
+      },
     },
   },
 }
