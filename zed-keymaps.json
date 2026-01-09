@@ -60,12 +60,39 @@
       "alt-f7": "editor::FindAllReferences",
       "ctrl-shift-alt-insert": "workspace::NewFile",
       "ctrl-shift-alt-w": "pane::CloseAllItems",
+
+      "ctrl-shift-alt-p": [
+        "action::Sequence",
+        [
+          "editor::Copy",
+          "file_finder::Toggle",
+          ["workspace::SendKeystrokes", "ctrl-v"],
+        ],
+      ],
     },
   },
+  // {
+  //   "context": "ProjectSearchBar",
+  //   "bindings": {
+  //     "enter": "project_search::Search",
+  //   },
+  // },
   {
     "context": "Terminal",
     "bindings": {
       "alt-f": "workspace::ToggleZoom",
     },
   },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-p": null
+    }
+  },
+  {
+    "context": "(FileFinder || FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-p": null
+    }
+  }
 ]
